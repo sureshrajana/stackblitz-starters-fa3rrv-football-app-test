@@ -1,7 +1,7 @@
 import { TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController, TestRequest } from '@angular/common/http/testing';
 import { LeagueService } from './league.service';
-import { API_URL} from '../../constants';
+import { API_URL_PREFIX } from '../../constants';
 import { getLeague } from '../../mocks';
 
 describe('LeagueService', () => {
@@ -27,7 +27,7 @@ describe('LeagueService', () => {
       tick();
       expect(league.length > 0).toBeTruthy();
     });
-    const url = `${API_URL}/leagues?id=${leagueId}&current=true`
+    const url = `${API_URL_PREFIX}/leagues?id=${leagueId}&current=true`
     const request: TestRequest = controller.expectOne({
       method: 'GET',
       url,
