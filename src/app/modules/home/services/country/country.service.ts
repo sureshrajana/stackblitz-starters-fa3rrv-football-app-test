@@ -4,29 +4,28 @@ import { Observable, map, shareReplay } from 'rxjs';
 import { CountryServiceModule } from './country.service.module';
 import { COUNTRY_ENABLES } from '../../constants';
 import { ApiCountryResponse, Country } from '../../models';
-import { environment } from 'src/environments/environment';
-
+import { API_URL_PREFIX, API_KEY } from '../../constants';
 @Injectable({
-  providedIn: CountryServiceModule
+  providedIn: CountryServiceModule,
 })
 export class CountryService {
-
   private countries!: Country[];
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getCountries(): Observable<Country[]> {
-    const url = `${environment.apiUrlPrefix}/countries`;
+    const url = API_URL_PREFIX + '/countries';
     const HEADER_OPTIONS = {
       headers: new HttpHeaders({
-        'x-apisports-key': environment.apiKey,
-      })
+        'x-apisports-key': API_KEY,
+      }),
     };
-    return this.http.get<ApiCountryResponse>(url, HEADER_OPTIONS)
-    .pipe(
-      map(data => data.response),
-      map(countries => countries.filter(country => COUNTRY_ENABLES.includes(country.name))),
-      map(countries => this.countries = countries),
+    return this.http.get<ApiCountryResponse>(url, HEADER_OPTIONS).pipe(
+      map((data) => data.response),
+      map((countries) =>
+        countries.filter((country) => COUNTRY_ENABLES.includes(country.name))
+      ),
+      map((countries) => (this.countries = countries)),
       shareReplay()
     );
   }
@@ -35,4 +34,3 @@ export class CountryService {
     return this.countries;
   }
 }
-

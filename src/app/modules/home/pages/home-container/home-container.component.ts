@@ -55,6 +55,7 @@ export class HomeContainerComponent implements OnInit, OnDestroy {
   }
 
   onSelectCountry(country: Country): void {
+    console.log("seelif",country)
     this.leagueId = this.getLeagueId(country.name);
     this.countrySelected = country.name;
     this.country = country;
