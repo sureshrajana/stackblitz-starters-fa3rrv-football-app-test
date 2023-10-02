@@ -4,7 +4,7 @@ import { Observable, map, shareReplay } from 'rxjs';
 import { CountryServiceModule } from './country.service.module';
 import { COUNTRY_LIST } from '../../constants';
 import { ApiCountryResponse, Country } from '../../models';
-import { API_URL_PREFIX, API_KEY } from '../../constants';
+import { API_URL, API_KEY } from '../../constants';
 @Injectable({
   providedIn: CountryServiceModule,
 })
@@ -14,7 +14,7 @@ export class CountryService {
   constructor(private http: HttpClient) {}
 
   getCountries(): Observable<Country[]> {
-    const url = API_URL_PREFIX + '/countries';
+    const url = API_URL + '/countries';
     const HEADER_OPTIONS = {
       headers: new HttpHeaders({
         'x-apisports-key': API_KEY,

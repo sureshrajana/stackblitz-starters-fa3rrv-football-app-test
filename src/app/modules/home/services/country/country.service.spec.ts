@@ -2,7 +2,7 @@ import { TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController, TestRequest } from '@angular/common/http/testing';
 
 import { CountryService } from './country.service';
-import { API_URL_PREFIX } from '../../constants';
+import { API_URL } from '../../constants';
 import { getCountries } from '../../mocks';
 
 describe('CountryService', () => {
@@ -27,7 +27,7 @@ describe('CountryService', () => {
       tick();
       expect(countries.length > 0).toBeTruthy();
     });
-    const url = `${API_URL_PREFIX}/countries`
+    const url = `${API_URL}/countries`
     const request: TestRequest = controller.expectOne({
       method: 'GET',
       url,
