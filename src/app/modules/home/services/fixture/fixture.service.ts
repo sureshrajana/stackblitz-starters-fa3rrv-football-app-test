@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, map, shareReplay } from 'rxjs';
 import { ApiFixtureResponse, Fixture } from '../../models';
 import { FixtureServiceModule } from './fixture.service.module';
-import { API_URL_PREFIX, API_KEY } from '../../constants';
+import { API_URL, API_KEY } from '../../constants';
 
 @Injectable({
   providedIn: FixtureServiceModule,
@@ -17,8 +17,9 @@ export class FixtureService {
     year: string
   ): Observable<Fixture[]> {
     const url =
-      API_URL_PREFIX +
-      '/'+`fixtures?league=${leagueId}&season=${year}&team=${teamId}&last=10`;
+      API_URL +
+      '/' +
+      `fixtures?league=${leagueId}&season=${year}&team=${teamId}&last=10`;
     const HEADER_OPTIONS = {
       headers: new HttpHeaders({
         'x-apisports-key': API_KEY,

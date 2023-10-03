@@ -6,7 +6,7 @@ import {
   ApiStandingLeagueResponse,
   StandingLeague,
 } from '../../models/standing.model';
-import { API_URL_PREFIX, API_KEY } from '../../constants';
+import { API_URL, API_KEY } from '../../constants';
 
 @Injectable({
   providedIn: StandingsServiceModule,
@@ -18,8 +18,7 @@ export class StandingsService {
     leagueId: string,
     year: string
   ): Observable<StandingLeague[]> {
-    const url =
-      API_URL_PREFIX + '/' + `standings?league=${leagueId}&season=${year}`;
+    const url = API_URL + '/' + `standings?league=${leagueId}&season=${year}`;
     const HEADER_OPTIONS = {
       headers: new HttpHeaders({
         'x-apisports-key': API_KEY,
