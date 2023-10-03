@@ -1,0 +1,29 @@
+<div class="item-card">
+    <table class="item-card-table">
+        <tbody>
+            <tr *ngFor="let fixture of fixtures; trackBy: trackByItem;">
+                <td class="tab-se-2 center">
+                    <img width="40" alt="{{fixture.teams.home.name}} Logo" [src]="fixture.teams.home.logo"/>
+                </td>
+                <td class="tab-se-4 center">
+                    {{ fixture.teams.home.name }}
+                </td>
+                <td class="tab-se-1 center">
+                    {{ fixture.goals.home }}
+                </td>
+                <td class="tab-se-1 center">
+                    <span>-</span>
+                </td>
+                <td class="tab-se-1 center">
+                    {{ fixture.goals.away }}
+                </td>
+                <td class="tab-se-4 center">
+                    {{ fixture.teams.away.name }}
+                </td>
+                <td class="tab-se-2 center">
+                    <img width="40" alt="{{fixture.teams.away.name}} Logo" [src]="fixture.teams.away.logo"/>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
