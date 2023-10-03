@@ -7,13 +7,12 @@ import { ApiCountryResponse, Country } from '../../models/country.model';
 import { COUNTRY_List } from 'src/app/constants/country.constant';
 
 @Injectable({
-  providedIn: CountryServiceModule
+  providedIn: CountryServiceModule,
 })
 export class CountryService {
-
   private countries!: Country[];
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getCountries(): Observable<Country[]> {
     const url = API_URL + '/countries';
@@ -32,9 +31,7 @@ export class CountryService {
     );
   }
 
-
   getCachedCounties(): Country[] {
     return this.countries;
   }
 }
-
