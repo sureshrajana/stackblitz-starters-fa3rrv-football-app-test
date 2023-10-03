@@ -1,2 +1,2 @@
 export const API_URL = 'https://v3.football.api-sports.io';
-export const API_KEY = '19c550ede25cac768f814f33c61606c7';
+export const API_KEY = '2f02998f2d1b6d872a8d27dc85fd7114';
